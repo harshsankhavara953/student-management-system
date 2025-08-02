@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Buttons</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-insert {
+            background-color: #4CAF50;
+        }
+
+        .btn-update {
+            background-color: #2196F3;
+        }
+
+        .btn-search {
+            background-color: brown;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+        }
+        .btn-score {
+            background-color: blueviolet;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .cusid-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="button-container">
+        <a href="{% url 'insert' %}" class="btn btn-insert">Insert</a>
+        <a href="{% url 'update' %}" class="btn btn-update">Update</a>
+        <a href="{% url 'search' %}" class="btn btn-search">Search</a>
+        <a href="{% url 'delete' %}" class="btn btn-delete">Delete</a>
+        <a href="{% url 'top3' %}" class="btn btn-score">Top 3</a>
+    </div>
+    
+</body>
+</html>

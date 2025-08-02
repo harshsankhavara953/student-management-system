@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Records</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 40px 20px 20px 20px; /* Extra top padding */
+      display: flex;
+      justify-content: center; /* Center horizontally */
+    }
+
+    .table-container {
+      width: 100%;
+      max-width: 1200px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: brown;
+      color: white;
+      font-size: 18px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+      transform: scale(1.02);
+      transition: transform 0.2s;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    tr {
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Roll No</th>
+          <th>Name</th>
+          <th>C Marks</th>
+          <th>CPP Marks</th>
+          <th>Python</th>
+          <th>Total Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in records %}
+        <tr>
+          <td>{{ record.0 }}</td>
+          <td>{{ record.1 }}</td>
+          <td>{{ record.2 }}</td>
+          <td>{{ record.3 }}</td>
+          <td>{{ record.4 }}</td>
+          <td>{{ record.5 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

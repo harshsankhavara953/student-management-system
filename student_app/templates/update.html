@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Student Data</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #edf0f4, #f9fbfd);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #34495e;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      background-color: #fcfcfc;
+      font-size: 15px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      border-color: #2980b9;
+      box-shadow: 0 0 6px rgba(41, 128, 185, 0.3);
+      outline: none;
+    }
+
+    .btn-insert {
+      width: 100%;
+      padding: 12px;
+      background-color: #2980b9;
+      color: white;
+      font-size: 17px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn-insert:hover {
+      background-color: #2471a3;
+      transform: translateY(-1px);
+    }
+
+    .btn-insert:active {
+      transform: scale(0.98);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Update Student Data</h2>
+    <form action="{% url 'update' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="rno">Roll No:</label>
+        <input type="number" id="rno" name="rno" required>
+      </div>
+      <div class="form-group">
+        <label for="nm">Name:</label>
+        <input type="text" id="nm" name="nm" required>
+      </div>
+      <div class="form-group">
+        <label for="c">C Marks:</label>
+        <input type="number" id="c" name="c" required>
+      </div>
+      <div class="form-group">
+        <label for="cpp">CPP Marks:</label>
+        <input type="number" id="cpp" name="cpp" required>
+      </div>
+      <div class="form-group">
+        <label for="py">Python Marks:</label>
+        <input type="number" id="py" name="py" required>
+      </div>
+      <button type="submit" class="btn-insert">Update</button>
+    </form>
+  </div>
+
+</body>
+</html>

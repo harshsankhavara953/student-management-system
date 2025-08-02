@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Student</title>
+  <style>
+    /* Overall body styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .main-container {
+      margin-top: 40px; /* Push down from top */
+      width: 60%;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+      margin-right: 10px;
+      transition: border 0.3s;
+    }
+
+    input[type="number"]:focus {
+      border-color: #4CAF50;
+      outline: none;
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+    }
+
+    button[type="submit"] {
+      background-color: rgb(91, 91, 235);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: blue;
+      transform: scale(1.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th {
+      background-color: rgb(207, 41, 41);
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+      background-color: #f2f2f2;
+    }
+
+    p {
+      font-size: 18px;
+      color: #ff5733;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-container">
+    <h2>Search Student</h2>
+
+    <form method="POST" action="{% url 'search' %}">
+      {% csrf_token %}
+      <input type="number" name="rno" placeholder="Enter Roll No" required>
+      <button type="submit">Search</button>
+    </form>
+
+    {% if students %}
+      <h2>Search Result:</h2>
+      <table border="1">
+        <tr>
+          <th>Roll No</th>
+          <th>Name</th>
+          <th>C</th>
+          <th>CPP</th>
+          <th>Python</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+          <td>{{ student.0 }}</td>
+          <td>{{ student.1 }}</td>
+          <td>{{ student.2 }}</td>
+          <td>{{ student.3 }}</td>
+          <td>{{ student.4 }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% elif searched %}
+      <p>No student found with that roll number.</p>
+    {% endif %}
+  </div>
+
+</body>
+</html>

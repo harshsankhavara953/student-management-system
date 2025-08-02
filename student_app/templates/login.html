@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pro Stylish Login</title>
+  <style>
+
+    /* Import a beautiful font */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #c850c0, #4158d0);
+      overflow: hidden;
+      animation: backgroundAnimation 10s ease infinite alternate;
+    }
+
+    /* Animate background color */
+    @keyframes backgroundAnimation {
+      0% { background: linear-gradient(135deg, #c850c0, #4158d0); }
+      100% { background: linear-gradient(135deg, #ffcc70, #4158d0); }
+    }
+
+    .login-form {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      width: 350px;
+      animation: slideIn 1.2s ease;
+      transition: all 0.3s ease;
+    }
+
+    .login-form:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .login-form h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-size: 16px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .input-group input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .input-group input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(1.02);
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      border: none;
+      padding: 12px 40px;
+      font-size: 16px;
+      color: #fff;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.4s, transform 0.4s;
+    }
+
+    .button-group button:hover {
+      background: linear-gradient(45deg, #ff4b2b, #ff416c);
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    /* Fade-in effect */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Slide-in form */
+    @keyframes slideIn {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+
+    }
+
+.register-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-link:hover {
+  color: blueviolet;
+  text-decoration: underline;
+}
+
+
+  </style>
+</head>
+
+<body>
+
+  <form method="POST" action="/login/" class="login-form">
+    {% csrf_token %}
+    <h2>Login</h2>
+
+    <div class="input-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required />
+    </div>
+
+    <div class="button-group">
+      <button type="submit">Login</button>
+    </div>
+    <a class="register-link" href="{% url 'register' %}">Don't have an account? Register Now.</a>
+
+ </form>
+</body>
+</html>
